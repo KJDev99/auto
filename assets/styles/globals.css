@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #fafafa;
+}
+
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mySwiper1 .swiper-pagination-bullet {
+  background: #e1e1e1;
+  height: 4px;
+  width: 15px;
+  border-radius: 4px;
+}
+.mySwiper1 .swiper-pagination-bullet-active {
+  background: #ed0000;
+  width: 30px;
+}
+.mySwiper1 .swiper-button-prev {
+  background: #ffffff33;
+  height: 40px;
+  width: 60px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.mySwiper1 .swiper-button-prev::after {
+  font-size: 12px;
+  font-weight: bold;
+}
+.mySwiper1 .swiper-button-next {
+  background: #ffffff33;
+  height: 40px;
+  width: 60px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.mySwiper1 .swiper-button-next::after {
+  font-size: 12px;
+  font-weight: bold;
+}
+.news_shadow {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 23.71%,
+    rgba(0, 0, 0, 0.9) 84.12%
+  );
+}
+
+.bg-form1 {
+  background: url("/Form.png");
+  max-width: 540px;
+  width: 100%;
+}
+.bg-form2 {
+  background: url("/contact-form.png") center/cover no-repeat;
+  width: 100%;
+}
+
+.bg_clip {
+  background: url("/bgred.png") right center / 75% auto no-repeat;
+}
+.bg_clip2 {
+  background: url("/infoblockbg.png") right center / 100% 100% no-repeat;
+}
+
+.character_after::after {
+  content: "";
+  height: 90px;
+  width: 1px;
+  background: #dddddd;
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
