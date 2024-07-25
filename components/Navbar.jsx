@@ -23,7 +23,7 @@ const Navbar = () => {
     }
   }, [isMenuOpen]);
   useEffect(() => {
-    setIsMenuOpen((prev) => !prev);
+    setIsMenuOpen(true);
   }, [pathname]);
   return (
     <div className="bg-white">
