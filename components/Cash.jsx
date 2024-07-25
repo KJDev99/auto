@@ -82,16 +82,23 @@ const Cash = () => {
   return (
     <div className="container">
       <div className="flex flex-col mb-9">
-        <h2 className="font-montserrat text-[28px] font-black">В наличии</h2>
-        <div className="grid grid-cols-3 gap-6">
+        <h2 className="font-montserrat text-[28px] font-black max-md:text-xl">
+          В наличии
+        </h2>
+        <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1 max-md:flex max-md:overflow-x-auto max-md:gap-[10px]  custom-scrollbar">
           {cardCarData.map((elon, index) => (
-            <Link href={`/katalog/${index}`}>
-              <CardCar key={index} {...elon} />
+            <Link
+              href={`/katalog/${index}`}
+              key={index}
+              className="max-md:w-full max-md:flex-shrink-0"
+            >
+              <CardCar {...elon} />
             </Link>
           ))}
         </div>
+
         <div className="flex justify-end mt-[30px]">
-          <button className="border border-red text-red text-sm px-[50px] py-5 font-medium">
+          <button className="border border-red text-red text-sm px-[50px] py-5 font-medium max-md:px-[38px] max-md:text-xs">
             Все машины
           </button>
         </div>

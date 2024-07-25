@@ -13,15 +13,15 @@ const MainInfo = () => {
       <Image
         src={innerBg1}
         alt="Chap tomondagi rasm"
-        className="absolute top-[-128px] left-0 z-[-1] "
+        className="absolute top-[-128px] left-0 z-[-1] max-md:top-[-28px]"
       />
       <Image
         src={innerBg2}
         alt="O'ng tomondagi rasm"
-        className="absolute top-[50px] right-0 z-[-1]"
+        className="absolute top-[50px] right-0 z-[-1] max-md:top-[760px]"
       />
       <div className="container  pt-[230px] ">
-        <div className="grid grid-cols-4 gap-6 mb-[50px]">
+        <div className="grid md:grid-cols-4 gap-6 mb-[50px]">
           <InfoMenuItem
             img={itemImg1}
             text="Работаем под ключ"
@@ -45,19 +45,19 @@ const MainInfo = () => {
             top={true}
           />
         </div>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-md:text-[13px] max-md:gap-4">
           <p className="text-[#989898]">
             Мы имеем огромный опыт работы с автомобильным рынком Кореи и
             тщательно отбираем автомобили для наших клиентов, учитывая их
             потребности и бюджет. Мы работаем только с надежными поставщиками и
             перевозчиками, чтобы обеспечить безопасность и надежность доставки.
           </p>
-          <div className="flex flex-col ml-[140px]">
+          <div className="flex flex-col md:ml-[140px]">
             <p className="text-black mb-6 font-semibold">
               Приобретайте качественный автомобиль по выгодным условиям с нами –
               мы обеспечим успешную и приятную покупку.
             </p>
-            <div className="w-[200px] h-[70px]">
+            <div className="w-[200px] h-[70px] max-md:w-[184px] max-md:h-[60px]">
               <Button text="Оставить заявку" />
             </div>
           </div>

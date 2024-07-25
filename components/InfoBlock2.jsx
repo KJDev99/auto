@@ -5,20 +5,20 @@ import Image from "next/image";
 
 const InfoBlock = () => {
   return (
-    <div className="mt-[100px] container shadow-lg rounded-[15px] flex  h-[288px]">
-      <div className="w-1/2 p-8">
-        <h2 className="text-[#202020] text-[26px] font-montserrat font-bold">
+    <div className="mt-[100px]  shadow-lg rounded-[15px] flex  h-[288px] max-md:h-[543px] max-md:flex-col">
+      <div className="w-1/2 p-8 max-md:w-full max-md:py-5 max-md:px-5 bg-white">
+        <h2 className="text-[#202020] text-[26px] font-montserrat font-bold max-md:text-xl ">
           Нужна помощь с выбором?
         </h2>
-        <p className="mb-6 mt-3 text-[#989898] font-medium">
+        <p className="mb-6 mt-3 text-[#989898] font-medium max-md:mt-2 max-md:mb-5 max-md:text-[13px]">
           Оставьте заявку, и наши менеджеры помогут вам подобрать автомобиль под
           ваши потребности и бюджет!
         </p>
-        <div className="w-[210px] h-[67px]">
+        <div className="w-[210px] h-[67px] max-md:w-[167px] max-md:h-[57px]">
           <Button text="Оставить заявку" />
         </div>
       </div>
-      <div className="w-1/2 bg_clip2 rounded-[15px] relative"></div>
+      <div className="w-1/2 bg_clip2 rounded-b-[15px] relative max-md:w-full h-full"></div>
     </div>
   );
 };

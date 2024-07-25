@@ -15,10 +15,10 @@ const Reviews = () => {
   return (
     <div className="container relative">
       <div className="flex justify-between items-center">
-        <h2 className="font-montserrat text-[28px] font-black mb-[30px]">
+        <h2 className="font-montserrat text-[28px] font-black mb-[30px]  max-md:text-xl max-md:mb-5">
           Отзывы о Boom-avto
         </h2>
-        <Image src={Service} alt="Service" />
+        <Image src={Service} alt="Service" className="max-md:hidden" />
       </div>
 
       <Swiper
@@ -61,10 +61,10 @@ const Reviews = () => {
         </SwiperSlide>
       </Swiper>
 
-      <div className="swiper-button-prev-custom2 absolute right-[80px] transform translate-y-1/2 bottom-[-40px] cursor-pointer z-10 w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
+      <div className="swiper-button-prev-custom2 absolute right-[80px] transform translate-y-1/2 bottom-[-40px] max-md:w-[49px] max-md:h-8 cursor-pointer z-10 w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
         <FaChevronLeft />
       </div>
-      <div className="swiper-button-next-custom2 absolute right-0 transform translate-y-1/2 bottom-[-40px] z-10 cursor-pointer w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
+      <div className="swiper-button-next-custom2 absolute right-0 max-md:right-[20px] max-md:w-[49px] max-md:h-8 transform translate-y-1/2 bottom-[-40px] z-10 cursor-pointer w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
         <FaChevronRight />
       </div>
     </div>

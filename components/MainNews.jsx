@@ -52,7 +52,7 @@ const MainNews = () => {
   ];
   return (
     <div className="container relative">
-      <h2 className="font-montserrat text-[28px] font-black mb-[30px]">
+      <h2 className="font-montserrat text-[28px] font-black mb-[30px]  max-md:text-xl max-md:mb-5">
         Новости
       </h2>
       <Swiper
@@ -73,7 +73,7 @@ const MainNews = () => {
           prevEl: ".swiper-button-prev-custom3",
         }}
         modules={[Navigation]}
-        className="mySwiper mb-[170px]"
+        className="mySwiper mb-[170px] max-md:mb-10"
       >
         {cardNewsData.map((news, index) => (
           <SwiperSlide key={index}>
@@ -88,10 +88,10 @@ const MainNews = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="swiper-button-prev-custom3 absolute right-[80px] transform translate-y-1/2 bottom-[-40px] cursor-pointer z-10 w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
+      <div className="swiper-button-prev-custom3 absolute right-[80px] transform translate-y-1/2 bottom-[-40px] max-md:w-[49px] max-md:h-8 cursor-pointer z-10 w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
         <FaChevronLeft />
       </div>
-      <div className="swiper-button-next-custom3 absolute right-0 transform translate-y-1/2 bottom-[-40px] z-10 cursor-pointer w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
+      <div className="swiper-button-next-custom3 absolute right-0 max-md:w-[49px] max-md:h-8 max-md:right-[20px] transform translate-y-1/2 bottom-[-40px] z-10 cursor-pointer w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
         <FaChevronRight />
       </div>
     </div>

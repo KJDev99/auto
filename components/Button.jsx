@@ -9,7 +9,7 @@ const Button = ({ bg, text, textColor, image }) => {
       } ${textColor ? `bg-${textColor}` : "text-white"}`}
     >
       {text}
-      {image && <Image className="absolute top-6 left-10" src={image} />}
+      {image && <Image className="absolute top-6 left-10" src={image} alt="img"/>}
     </div>
   );
 };

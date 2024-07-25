@@ -76,10 +76,13 @@ body {
 }
 
 .bg-form1 {
-  background: url("/Form.png");
+  background: url("/Form.png") no-repeat center center;
+  background-size: contain;
+  height: max-content;
   max-width: 540px;
   width: 100%;
 }
+
 .bg-form2 {
   background: url("/contact-form.png") center/cover no-repeat;
   width: 100%;
@@ -92,6 +95,16 @@ body {
   background: url("/infoblockbg.png") right center / 100% 100% no-repeat;
 }
 
+@media (max-width: 768px) {
+  .bg_clip2 {
+    background: url("/infoblockbg.png") right center / 200% 100% no-repeat;
+  }
+  .bg_clip {
+    background: url("/bgred.png") center bottom / 100% no-repeat;
+  }
+}
+
+
 .character_after::after {
   content: "";
   height: 90px;
@@ -101,4 +114,28 @@ body {
   right: -25px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: red transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 10px;
+}
+
+
+/* styles.css */
+.no-scroll {
+  overflow: hidden;
 }

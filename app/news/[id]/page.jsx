@@ -16,24 +16,24 @@ const page = () => {
     },
   ];
   return (
-    <div className="container mb-[100px]">
-      <div className="flex gap-6">
-        <div className="w-4/6">
-          <p className="text-[#050B20] text-sm mt-9 mb-2 font-medium">
+    <div className="container mb-[100px] max-md:mb-[60px]">
+      <div className="flex gap-6 max-md:flex-col">
+        <div className="w-4/6 max-md:w-full">
+          <p className="text-[#050B20] text-sm mt-9 mb-2 font-medium max-md:text-xs max-md:mt-5">
             Главная/Новости/ {cardNewsData[0].title}
           </p>
-          <h2 className="mb-[15px] text-[#202020] text-[28px] font-black">
+          <h2 className="mb-[15px] text-[#202020] text-[28px] font-black max-md:text-lg max-md:mb-1">
             {cardNewsData[0].title}
           </h2>
-          <p className="text-[#989898] mb-[22px] text-sm font-medium">
+          <p className="text-[#989898] mb-[22px] text-sm font-medium max-md:text-xs max-md:mb-5">
             7 Июля 2024
           </p>
           <Image
             src={cardNewsData[0].image}
-            alt="{cardNewsData[0].title}"
-            className="h-[383px] w-full rounded-[15px] object-cover"
+            alt="title"
+            className="h-[383px] w-full rounded-[15px] object-cover max-md:h-[267px]"
           />
-          <p className="mt-[25px] mb-[30px] text-[#989898] font-medium">
+          <p className="mt-[25px] mb-[30px] text-[#989898] font-medium max-md:my-5 max-md:text-[13px]">
             С начала весны 2022 года российский автомобильный рынок
             подвергся кардинальным изменениям. Экономические ограничения и
             политические разногласия спровоцировали прекращение работы многих
@@ -44,10 +44,10 @@ const page = () => {
             Китайский рынки. Ниже рассмотрим как осуществляется импорт авто из
             Южной Кореи, начав с доступных способов покупки.
           </p>
-          <h3 className="text-[#202020] font-bold text-lg">
+          <h3 className="text-[#202020] font-bold text-lg max-md:text-[16px]">
             Покупка у официального дилера
           </h3>
-          <p className="mt-[15px] mb-[30px] text-[#989898] font-medium">
+          <p className="mt-[15px] mb-[30px] text-[#989898] font-medium max-md:my-5 max-md:text-[13px]">
             Обычно дилеры реализуют в первую очередь автомобили, которые
             произведены заводами, расположенными на территории РФ. При этом,
             есть большая доля и импортных сборок. Такой вариант покупки
@@ -55,18 +55,18 @@ const page = () => {
             представителями. В их числе «навязывание» простых опций по
             завышенной цене, увеличенная наценка из-за повышенного спроса, др.
           </p>
-          <div className="flex flex-col p-[18px] border border-[#E6E6E6] rounded-[15px]">
+          <div className="flex flex-col p-[18px]  border border-[#E6E6E6] rounded-[15px]">
             <div className="flex items-center ">
               <Image src={imagewarn} alt="warn" />
-              <h4 className="mx-5 text-[#202020] font-bold">Внимание!</h4>
+              <h4 className="mx-5 text-[#202020] font-bold max-md:text-[16px]">Внимание!</h4>
             </div>
-            <p className="my-[10px] text-[#989898] font-medium">
+            <p className="my-[10px] text-[#989898] font-medium max-md:text-[13px]">
               Важно отметить, что акцент на импорт авто из Южной Кореи
               подтверждает и официальная статистика, в числе которых и данные
               южнокорейской таможни. В первой половине 2022 года объемы продаж
               выросли в шесть раз.
             </p>
-            <p className="text-[#989898] font-medium">
+            <p className="text-[#989898] font-medium max-md:text-[13px]">
               Повышение показателей обусловлено и тем, что южнокорейские
               компании не могут обеспечить производительность заводов,
               соответствующую запросам потребителей, проживающих на территории
@@ -75,7 +75,7 @@ const page = () => {
             </p>
           </div>
         </div>
-        <div className="w-2/6 mt-[190px] p-5 shadow-lg h-max rounded-[15px]">
+        <div className="w-2/6 mt-[190px] p-5 shadow-lg h-max rounded-[15px] max-md:hidden">
           <h3 className="text-[#202020] font-semibold text-[20px] pr-[100px]">
             Читайте другие статьи в нашем блоге:
           </h3>

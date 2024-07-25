@@ -139,7 +139,7 @@ const CatalogCars = () => {
     }
 
     return (
-      <div className="flex justify-center mt-[50px] mb-5">
+      <div className="flex justify-center mt-[50px] max-md:my-3 mb-5">
         <button
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
@@ -172,12 +172,12 @@ const CatalogCars = () => {
   };
 
   return (
-    <div className="container">
+    <div className="md:container">
       <div className="flex flex-col mb-9">
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
           {currentCars.map((elon, index) => (
-            <Link href={`/katalog/${index}`}>
-              <CardCar key={index} {...elon} />
+            <Link href={`/katalog/${index}`} key={index}>
+              <CardCar {...elon} />
             </Link>
           ))}
         </div>

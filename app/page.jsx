@@ -20,7 +20,9 @@ const Home = () => {
       <CarsBrand />
       <Reviews />
       <MainNews />
-      <MainForm />
+      <div className="container">
+        <MainForm />
+      </div>
     </div>
   );
 };

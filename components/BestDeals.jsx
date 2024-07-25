@@ -88,8 +88,8 @@ const BestDeals = () => {
   ];
 
   return (
-    <div className="container relative">
-      <h2 className="font-montserrat text-[28px] font-black mb-[30px]">
+    <div className="md:container relative">
+      <h2 className="font-montserrat text-[28px] font-black mb-[30px]  max-md:text-xl max-md:mb-5 container">
         Лучшие предложения
       </h2>
 
@@ -111,7 +111,7 @@ const BestDeals = () => {
           prevEl: ".swiper-button-prev-custom1",
         }}
         modules={[Navigation]}
-        className="mySwiper mb-[170px]"
+        className="mySwiper mb-[170px] max-md:mb-[120px]"
       >
         {cardCarData.map((car, index) => (
           <SwiperSlide key={index}>
@@ -132,10 +132,10 @@ const BestDeals = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="swiper-button-prev-custom1 absolute right-[80px] transform translate-y-1/2 bottom-[-40px] cursor-pointer z-10 w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
+      <div className="swiper-button-prev-custom1 absolute right-[80px] transform translate-y-1/2 bottom-[-40px] cursor-pointer z-10 w-[60px] h-10 max-md:w-[49px] max-md:h-8 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
         <FaChevronLeft />
       </div>
-      <div className="swiper-button-next-custom1 absolute right-0 transform translate-y-1/2 bottom-[-40px] z-10 cursor-pointer w-[60px] h-10 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
+      <div className="swiper-button-next-custom1 absolute right-0 max-md:right-[20px] transform translate-y-1/2 bottom-[-40px] z-10 cursor-pointer w-[60px] h-10 max-md:w-[49px] max-md:h-8 rounded-[30px] border border-[#E6E6E6] flex justify-center items-center">
         <FaChevronRight />
       </div>
     </div>

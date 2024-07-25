@@ -39,7 +39,7 @@ const YearsSelect = () => {
 
   return (
     <div className="flex flex-col items-start justify-center">
-      <label className="text-lg text-center w-full">Год</label>
+      <label className="text-lg text-center w-full max-md:text-sm max-md:text-left max-md:w-[140px] max-md:px-[10px] font-semibold">Год</label>
       <div className="flex items-center ">
         <input
           type="text"

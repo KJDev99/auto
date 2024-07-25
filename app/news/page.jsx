@@ -92,7 +92,7 @@ const page = () => {
     }
 
     return (
-      <div className="flex justify-center mt-[50px] mb-5">
+      <div className="flex justify-center md:mt-[50px] mb-5">
         <button
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
@@ -126,12 +126,15 @@ const page = () => {
 
   return (
     <div className="container">
-      <p className="text-[#050B20] text-sm my-9 font-medium">Главная/Новости</p>
+      <p className="text-[#050B20] text-sm mt-9 mb-[9px]  font-medium max-md:text-xs max-md:mt-5">
+        Главная/Новости
+      </p>
+      <h3 className="text-[28px] font-black mb-[30px] uppercase max-md:text-xl">Новости</h3>
       <div className="flex flex-col mb-9">
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
           {currentCars.map((elon, index) => (
-            <Link href={`/news/${index}`}>
-              <NewsCars key={index} {...elon} />
+            <Link key={index} href={`/news/${index}`}>
+              <NewsCars {...elon} />
             </Link>
           ))}
         </div>

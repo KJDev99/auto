@@ -2,15 +2,15 @@
 import React, { useState } from "react";
 
 const SelectPrice = () => {
-  const [minPrice, setMinPrice] = useState('1 000 000');
-  const [maxPrice, setMaxPrice] = useState('10 000 000');
+  const [minPrice, setMinPrice] = useState("1 000 000");
+  const [maxPrice, setMaxPrice] = useState("10 000 000");
 
   const formatPrice = (value) => {
-    return new Intl.NumberFormat('ru-RU').format(value);
+    return new Intl.NumberFormat("ru-RU").format(value);
   };
 
   const parsePrice = (value) => {
-    return parseInt(value.replace(/\s/g, ''), 10);
+    return parseInt(value.replace(/\s/g, ""), 10);
   };
 
   const handleMinPriceChange = (e) => {
@@ -42,9 +42,11 @@ const SelectPrice = () => {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center">
-      <label className="text-lg text-center w-full">Цена</label>
-      <div className="flex items-center">
+    <div className="flex flex-col items-start justify-center max-md:ml-5">
+      <label className="text-lg text-center w-full max-md:text-sm max-md:text-left max-md:w-1/2 font-semibold max-md:px-[10px]">
+        Цена
+      </label>
+      <div className="flex items-center ">
         <input
           type="text"
           value={minPrice}

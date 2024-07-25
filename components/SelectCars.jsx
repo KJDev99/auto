@@ -61,13 +61,15 @@ const SelectCars = () => {
   }, []);
 
   return (
-    <div className="flex flex-col relative px-[30px] ">
-      <div className="flex" ref={categoryRef}>
+    <div className="flex flex-col relative px-[30px] max-md:px-0 max-md:w-full">
+      <div className="flex max-md:w-full" ref={categoryRef}>
         <div
-          className={`flex flex-col p-[10px] w-[200px] rounded-[10px] justify-between cursor-pointer bg-white`}
+          className={`flex flex-col p-[10px] w-[200px] max-md:w-[140px] rounded-[10px] justify-between cursor-pointer bg-white`}
           onClick={toggleCategory}
         >
-          <h2 className="text-lg text-[#050B20] ">Выберите марку</h2>
+          <h2 className="text-lg text-[#050B20] max-md:text-sm">
+            Выберите&nbsp;марку
+          </h2>
           <div className="flex justify-between w-full my-2 items-center">
             <p className="text-sm text-[#050B20]">{selectedCategory}</p>
             <FaChevronLeft
@@ -78,7 +80,7 @@ const SelectCars = () => {
           </div>
         </div>
         {isCategoryOpen && (
-          <div className="flex flex-col p-[10px] mt-2 rounded-[10px] absolute bg-white shadow-lg w-[43%] left-0 top-[60px] z-10">
+          <div className="flex flex-col p-[10px] mt-2 rounded-[10px] absolute bg-white shadow-lg w-[43%] left-0 top-[60px] z-10 max-md:w-full">
             {categories.map((category, index) => (
               <div
                 key={index}
@@ -99,7 +101,7 @@ const SelectCars = () => {
                     onChange={handleCategoryChange}
                   />
                   <p
-                    className={`w-full px-4 py-2 rounded-md flex items-center justify-between text-sm ${
+                    className={`w-full px-4 py-2 rounded-md flex items-center justify-between text-sm max-md:px-2 ${
                       selectedCategory === category ||
                       hoveredCategory === category
                         ? "font-medium"
@@ -114,12 +116,14 @@ const SelectCars = () => {
           </div>
         )}
 
-        <div className="flex flex-col p-[10px] w-[200px] rounded-[10px] justify-between cursor-pointer ml-[90px]">
+        <div className="flex flex-col p-[10px] w-[200px] max-md:w-1/2 rounded-[10px] justify-between cursor-pointer ml-[90px] max-md:ml-5">
           <div className="flex flex-col w-full" ref={districtRef}>
             <div
               className={`flex flex-col  h-10 w-full rounded-[10px] justify-between  cursor-pointer bg-white`}
             >
-              <h2 className="text-lg text-[#050B20] ">Выберите модель</h2>
+              <h2 className="text-lg text-[#050B20] max-md:text-sm">
+                Выберите&nbsp;модель
+              </h2>
               {selectedCategory && (
                 <div
                   className="flex justify-between w-full my-2 items-center"
@@ -135,7 +139,7 @@ const SelectCars = () => {
               )}
             </div>
             {isDistrictOpen && (
-              <div className="flex flex-col p-[10px] mt-2 rounded-[10px] absolute bg-white shadow-lg w-1/2 top-[60px] z-10">
+              <div className="flex flex-col p-[10px] mt-2 rounded-[10px] absolute bg-white shadow-lg w-1/2 top-[60px] z-10 max-md:w-full max-md:left-0">
                 {districts[selectedCategory].map((district, index) => (
                   <div
                     key={index}
@@ -156,7 +160,7 @@ const SelectCars = () => {
                         onChange={handleDistrictChange}
                       />
                       <p
-                        className={`w-full px-4 py-2 rounded-md flex items-center justify-between text-sm ${
+                        className={`w-full px-4 py-2 rounded-md flex items-center justify-between text-sm max-md:px-2 ${
                           selectedDistrict === district ||
                           hoveredDistrict === district
                             ? "font-medium"

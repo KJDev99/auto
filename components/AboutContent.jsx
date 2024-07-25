@@ -7,22 +7,42 @@ import img5 from "@/assets/images/about/g5.png";
 import Image from "next/image";
 const AboutContent = () => {
   return (
-    <div className="grid grid-cols-7 gap-[23px]">
+    <div className="grid grid-cols-7 gap-[23px] max-md:gap-[10px] max-md:grid-cols-3 max-md:auto-rows-min">
       <div className="col-span-1 flex flex-col">
-        <div className="w-full bg-red rounded-[15px] mb-[17px] flex-grow py-[30px] px-5">
-          <h2 className="text-[52px] text-white font-bold">15</h2>
-          <p className="text-white font-extrabold text-[20px]">Лет в автобизнесе</p>
+        <div className="w-full bg-red rounded-[15px] mb-[17px] flex-grow py-[30px] px-5 max-md:p-3 max-md:mb-[10px]">
+          <h2 className="text-[52px] text-white font-bold max-md:text-[40px] ">
+            15
+          </h2>
+          <p className="text-white font-extrabold text-[20px] max-md:text-sm">
+            Лет в автобизнесе
+          </p>
         </div>
-        <Image src={img1} alt="img1" className="w-full h-[199ppx]" />
+        <Image src={img1} alt="img1" className="w-full" />
       </div>
-      <div className="col-span-3">
-        <Image src={img2} alt="img2" className="w-full !h-[500ppx]" />
+      <div className="col-span-3 max-md:col-span-2">
+        <Image src={img2} alt="img2" className="w-full" />
       </div>
-      <div className="col-span-3">
-        <Image src={img3} alt="img3" className="w-full h-[300ppx]" />
-        <div className="flex justify-between mt-[14px]">
-          <Image src={img4} alt="img4" className="w-[210px] h-[210px]" />
-          <Image src={img5} alt="img5" className="w-[306px] h-[210px]" />
+      <div className="col-span-3 rounded-[15px] overflow-hidden">
+        <Image
+          src={img3}
+          alt="img3"
+          className="w-full max-md:h-[191px] object-cover rounded-[15px]"
+        />
+        <div className="grid grid-cols-3 gap-[10px] mt-[14px]">
+          <div className="col-span-1 rounded-[15px] overflow-hidden ">
+            <Image
+              src={img4}
+              alt="img4"
+              className="w-full h-[210px] max-md:h-[133px] object-cover"
+            />
+          </div>
+          <div className="col-span-2 rounded-[15px] overflow-hidden ">
+            <Image
+              src={img5}
+              alt="img5"
+              className="w-full h-[210px] max-md:h-[133px] object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>

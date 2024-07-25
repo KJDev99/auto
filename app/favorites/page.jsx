@@ -173,17 +173,17 @@ const page = () => {
   };
   return (
     <div className="container">
-      <p className="text-[#050B20] text-sm mt-9 mb-2 font-medium">
+      <p className="text-[#050B20] text-sm mt-9 mb-2 font-medium max-md:text-xs max-md:mt-5">
         Главная/Избранные
       </p>
       <div className="flex flex-col mb-[100px]">
-        <h2 className="text-[28px] text-[#202020] font-black mb-[30px]">
+        <h2 className="text-[28px] text-[#202020] font-black mb-[30px] max-md:text-xl">
           Избранные
         </h2>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
           {currentCars.map((elon, index) => (
-            <Link href={`/katalog/${index}`}>
-              <CardCar key={index} {...elon} />
+            <Link href={`/katalog/${index}`} key={index}>
+              <CardCar {...elon} />
             </Link>
           ))}
         </div>

@@ -19,95 +19,116 @@ export default function Footer() {
   return (
     <div className="bg-black ">
       <div className="container relative">
-        <div className="grid grid-cols-5 pt-[60px] pb-[40px]">
-          <div className="gird-cols-1">
+        <div className="grid grid-cols-5 pt-[60px] pb-[40px] max-md:pt-5 max-md:mb-[30px]">
+          <div className="gird-cols-1 max-md:col-span-5 max-md:mb-[30px]">
             <Image src={logo} alt="logo" className="w-[143px]" />
           </div>
-          <div className="grid-cols-1">
+          <div className="grid-cols-1 max-md:col-span-2">
             <nav className="flex flex-col font-semibold text-white ">
-              <h3 className="text-lg mb-3">Компания</h3>
-              <Link className="mb-3" href="/">
+              <h3 className="text-lg mb-3 max-md:text-sm max-md:mb-2">
+                Компания
+              </h3>
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/">
                 Главная
               </Link>
-              <Link className="mb-3" href="/katalog">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/katalog">
                 Каталог
               </Link>
-              <Link className="mb-3" href="/about">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/about">
                 О нас
               </Link>
-              <Link className="mb-3" href="/news">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/news">
                 Новости
               </Link>
-              <Link className="mb-3" href="/contacts">
+              <Link
+                className="mb-3 max-md:text-xs max-md:mb-2"
+                href="/contacts"
+              >
                 Контакты
               </Link>
-              <Link className="mb-3" href="/favorites">
+              <Link
+                className="mb-3 max-md:text-xs max-md:mb-2"
+                href="/favorites"
+              >
                 Избранные
               </Link>
             </nav>
           </div>
-          <div className="grid-cols-1">
+          <div className="grid-cols-1 max-md:col-span-2">
             <nav className="flex flex-col font-semibold text-white ">
-              <h3 className="text-lg mb-3">марки</h3>
-              <Link className="mb-3" href="/">
+              <h3 className="text-lg mb-3 max-md:text-sm max-md:mb-2">марки</h3>
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/">
                 Honda
               </Link>
-              <Link className="mb-3" href="/catalog">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/catalog">
                 Hyndai
               </Link>
-              <Link className="mb-3" href="/about">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/about">
                 Infiniti
               </Link>
-              <Link className="mb-3" href="/news">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/news">
                 Lexus
               </Link>
-              <Link className="mb-3" href="/contacts">
+              <Link
+                className="mb-3 max-md:text-xs max-md:mb-2"
+                href="/contacts"
+              >
                 Mazda
               </Link>
-              <Link className="mb-3" href="/favorites">
+              <Link
+                className="mb-3 max-md:text-xs max-md:mb-2"
+                href="/favorites"
+              >
                 Nissan
               </Link>
             </nav>
           </div>
-          <div className="grid-cols-1">
+          <div className="grid-cols-1 max-md:col-span-1">
             <nav className="flex flex-col font-semibold text-white ">
-              <h3 className="text-lg mb-3">Типы авто</h3>
-              <Link className="mb-3" href="/">
+              <h3 className="text-lg mb-3 max-md:text-sm max-md:mb-2">
+                Типы авто
+              </h3>
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/">
                 Седан
               </Link>
-              <Link className="mb-3" href="/catalog">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/catalog">
                 Хэтчбек
               </Link>
-              <Link className="mb-3" href="/about">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/about">
                 внедорожник
               </Link>
-              <Link className="mb-3" href="/news">
+              <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/news">
                 Гибрид
               </Link>
-              <Link className="mb-3" href="/contacts">
-                Электрические
-              </Link>
-              <Link className="mb-3" href="/favorites">
+
+              <Link
+                className="mb-3 max-md:text-xs max-md:mb-2"
+                href="/favorites"
+              >
                 Купе
               </Link>
             </nav>
           </div>
-          <div className="grid-cols-1">
+          <div className="grid-cols-1 max-md:col-span-5">
             <nav className="flex flex-col font-semibold text-white ">
-              <h3 className="text-lg mb-3">Контакты</h3>
-              <div className="flex items-center mb-5">
+              <h3 className="text-lg mb-3 max-md:text-sm max-md:mb-2">
+                Контакты
+              </h3>
+              <div className="flex items-center mb-5 max-md:mb-[15px]">
                 <CiLocationOn className="mr-2" />
-                <span className="text-sm">
+                <span className="text-sm max-md:text-xs">
                   г. Москва, ул. Подольская, д. 12
                 </span>
               </div>
-              <div className="flex items-center mb-5">
+              <div className="flex items-center mb-5 max-md:mb-[15px]">
                 <BsTelephone className="mr-2" />
-                <span className="text-sm">+7 (495) 123-45-67</span>
+                <span className="text-sm max-md:text-xs">
+                  +7 (495) 123-45-67
+                </span>
               </div>
-              <div className="flex items-center mb-5">
+              <div className="flex items-center mb-5 max-md:mb-[15px]">
                 <CiMail className="mr-2" />
-                <span className="text-sm">info@example.com</span>
+                <span className="text-sm max-md:text-xs">info@example.com</span>
               </div>
               <div className="flex">
                 <div className="bg-[#333333] flex items-center justify-between p-4 mr-1">
@@ -120,11 +141,11 @@ export default function Footer() {
             </nav>
           </div>
         </div>
-        <p className="text-center pb-[30px] text-xs text-white">
+        <p className="text-center pb-[30px] text-xs text-white max-md:text-left">
           Политика и конфиденциальность
         </p>
         <div
-          className="absolute right-0 bottom-[30px] flex flex-col items-end cursor-pointer"
+          className="absolute right-0 bottom-[30px] flex flex-col items-end cursor-pointer max-md:right-5"
           onClick={handleScrollToTop}
         >
           <div className="rounded-full h-16 w-16 flex items-center justify-center border border-white">
