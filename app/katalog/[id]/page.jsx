@@ -19,7 +19,7 @@ import CarMore from "@/assets/images/carmore.svg";
 import CarSpeed from "@/assets/images/carspeed.svg";
 import CarYear from "@/assets/images/caryear.svg";
 import Button from "@/components/Button";
-import CharacterCars from "@/components/characterCars";
+import CharacterCars from "@/components/CharacterCars";
 
 import icon from "@/assets/images/icons/icon.svg";
 import icon1 from "@/assets/images/icons/icon (1).svg";
