@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CardCar from "./CardCar";
 import image from "@/assets/images/card.png";
@@ -10,83 +10,42 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { Navigation } from "swiper/modules";
 import Link from "next/link";
+import api from "@/lib/api";
 
 const BestDeals = () => {
-  const cardCarData = [
-    {
-      goodPrice: true,
-      top: false,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: true,
-      top: true,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: true,
-      top: true,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: true,
-      top: false,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: false,
-      top: true,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: false,
-      top: false,
-      savedcar: true,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-  ];
+  const [cardCarData, setCardCarData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const response = await api.get("/avot/best/");
+        const formattedData = response.data.results.map((car) => ({
+          goodPrice: car.good_price,
+          top: car.avto_xit,
+          savedcar: car.savedcar || false,
+          image: car.avto_image[0].image,
+          name: car.name,
+          text: car.short_description,
+          speed: car.probeg,
+          oil: car.type_fuel.name,
+          year: car.year,
+          price: car.price,
+          id: car.id,
+        }));
+        setCardCarData(formattedData);
+        console.log(response.data.results);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchCars();
+  }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
   return (
     <div className="md:container relative">
       <h2 className="font-montserrat text-[28px] font-black mb-[30px]  max-md:text-xl max-md:mb-5 container">
@@ -115,19 +74,8 @@ const BestDeals = () => {
       >
         {cardCarData.map((car, index) => (
           <SwiperSlide key={index}>
-            <Link href={`/katalog/${index}`}>
-              <CardCar
-                goodPrice={car.goodPrice}
-                top={car.top}
-                savedcar={car.savedcar}
-                image={car.image}
-                title={car.title}
-                text={car.text}
-                speed={car.speed}
-                oil={car.oil}
-                year={car.year}
-                price={car.price}
-              />
+            <Link href={`/katalog/${car.id}`}>
+              <CardCar {...car} />
             </Link>
           </SwiperSlide>
         ))}

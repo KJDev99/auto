@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { FaChevronLeft } from "react-icons/fa";
+import axios from 'axios';
 
 const SelectCars = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -9,18 +10,41 @@ const SelectCars = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [hoveredDistrict, setHoveredDistrict] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [districts, setDistricts] = useState([]);
   const categoryRef = useRef(null);
   const districtRef = useRef(null);
 
-  const categories = ["BMW", "Kia", "Tesla", "Mercedes-Benz", "Toyota"];
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://5.35.93.236:8000/avto/marka/');
+        setCategories(response.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
 
-  const districts = {
-    BMW: ["3 Series", "5 Series", "X5"],
-    Kia: ["Sportage", "Sorento", "Optima"],
-    Tesla: ["Model S", "Model 3", "Model X"],
-    "Mercedes-Benz": ["C-Class", "E-Class", "GLC"],
-    Toyota: ["Camry", "Corolla", "RAV4"],
-  };
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    const fetchDistricts = async () => {
+      if (selectedCategory) {
+        try {
+          const category = categories.find(cat => cat.name === selectedCategory);
+          if (category) {
+            const response = await axios.get(`http://5.35.93.236:8000/avto/model/${category.id}/`);
+            setDistricts(response.data);
+          }
+        } catch (error) {
+          console.error("Error fetching districts:", error);
+        }
+      }
+    };
+
+    fetchDistricts();
+  }, [selectedCategory, categories]);
 
   const toggleCategory = () => {
     setIsCategoryOpen(!isCategoryOpen);
@@ -81,34 +105,34 @@ const SelectCars = () => {
         </div>
         {isCategoryOpen && (
           <div className="flex flex-col p-[10px] mt-2 rounded-[10px] absolute bg-white shadow-lg w-[43%] left-0 top-[60px] z-10 max-md:w-full">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <div
-                key={index}
+                key={category.id}
                 className="relative"
-                onMouseEnter={() => setHoveredCategory(category)}
+                onMouseEnter={() => setHoveredCategory(category.name)}
                 onMouseLeave={() => setHoveredCategory(null)}
               >
                 <label
                   className={`flex items-center mb-0 cursor-pointer`}
-                  htmlFor={category}
+                  htmlFor={category.name}
                 >
                   <input
                     type="radio"
-                    id={category}
+                    id={category.name}
                     name="category"
                     className="hidden"
-                    checked={selectedCategory === category}
+                    checked={selectedCategory === category.name}
                     onChange={handleCategoryChange}
                   />
                   <p
                     className={`w-full px-4 py-2 rounded-md flex items-center justify-between text-sm max-md:px-2 ${
-                      selectedCategory === category ||
-                      hoveredCategory === category
+                      selectedCategory === category.name ||
+                      hoveredCategory === category.name
                         ? "font-medium"
                         : "font-normal"
                     }`}
                   >
-                    {category}
+                    {category.name}
                   </p>
                 </label>
               </div>
@@ -140,34 +164,34 @@ const SelectCars = () => {
             </div>
             {isDistrictOpen && (
               <div className="flex flex-col p-[10px] mt-2 rounded-[10px] absolute bg-white shadow-lg w-1/2 top-[60px] z-10 max-md:w-full max-md:left-0">
-                {districts[selectedCategory].map((district, index) => (
+                {districts.map((district) => (
                   <div
-                    key={index}
+                    key={district.id}
                     className="relative"
-                    onMouseEnter={() => setHoveredDistrict(district)}
+                    onMouseEnter={() => setHoveredDistrict(district.name)}
                     onMouseLeave={() => setHoveredDistrict(null)}
                   >
                     <label
                       className={`flex items-center mb-0 cursor-pointer`}
-                      htmlFor={district}
+                      htmlFor={district.name}
                     >
                       <input
                         type="radio"
-                        id={district}
+                        id={district.name}
                         name="district"
                         className="hidden"
-                        checked={selectedDistrict === district}
+                        checked={selectedDistrict === district.name}
                         onChange={handleDistrictChange}
                       />
                       <p
                         className={`w-full px-4 py-2 rounded-md flex items-center justify-between text-sm max-md:px-2 ${
-                          selectedDistrict === district ||
-                          hoveredDistrict === district
+                          selectedDistrict === district.name ||
+                          hoveredDistrict === district.name
                             ? "font-medium"
                             : "font-normal"
                         }`}
                       >
-                        {district}
+                        {district.name}
                       </p>
                     </label>
                   </div>

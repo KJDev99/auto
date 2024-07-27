@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "@/assets/styles/globals.css";
 
-import bg1 from "@/assets/images/herobg.webp";
+import { usePathname } from "next/navigation";
 
 import { Pagination, Navigation } from "swiper/modules";
 import Image from "next/image";
@@ -35,6 +35,7 @@ import icon10 from "@/assets/images/icons/icon (10).svg";
 import icon11 from "@/assets/images/icons/icon (11).svg";
 import BestDeals from "@/components/BestDeals";
 import InfoBlock from "@/components/InfoBlock2";
+import api from "@/lib/api";
 
 const page = () => {
   const cardCarData = [
@@ -52,19 +53,37 @@ const page = () => {
     },
   ];
 
+  const pathname = usePathname();
+  const lastSegment = pathname.split("/").pop();
+  const [cardCarData1, setCardCarData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get(`avto/${lastSegment}/`);
+        setCardCarData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const [saved, setSaved] = useState(cardCarData[0].savedcar);
   return (
     <div className="container mb-[100px] max-md:mb-[60px]">
       <div className="flex max-md:flex-col gap-6">
         <div className="w-4/6 max-md:w-full">
           <p className="text-[#050B20] text-sm mt-9 mb-2 font-medium max-md:mt-5 max-md:text-xs">
-            Главная/Новости/ {cardCarData[0].title}
+            Главная/Новости/ {cardCarData1.name}
           </p>
           <h2 className="mb-[15px] text-[#202020] text-[28px] font-black max-md:text-xl max-md:mb-[6px]">
-            {cardCarData[0].title}
+            {cardCarData1.name}
           </h2>
           <p className="text-[#989898] mb-[22px] text-sm font-medium max-md:text-xs">
-            {cardCarData[0].text}
+            {cardCarData1.short_description}
           </p>
           <Swiper
             pagination={true}
@@ -72,15 +91,16 @@ const page = () => {
             modules={[Pagination, Navigation]}
             className="mySwiper mySwiper1 rounded-[15px] md:h-[448px] max-md:h-[218px]"
           >
-            <SwiperSlide>
-              <Image src={bg1} alt="bg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image src={bg1} alt="bg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image src={bg1} alt="bg" />
-            </SwiperSlide>
+            {cardCarData1.avto_image &&
+              cardCarData1.avto_image.map((image) => (
+                <SwiperSlide key={image.id}>
+                  <img
+                    src={image.image}
+                    alt={`Image ${image.id}`}
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
         <div className="w-2/6 max-md:w-full mt-[160px] max-md:mt-0 p-7 max-md:p-5 shadow-lg rounded-[15px] relative">
@@ -103,15 +123,15 @@ const page = () => {
           </h2>
           <div className="flex items-center mb-4 max-md:mb-2">
             <span className="text-[#050B20] mr-2 line-through max-md:text-sm">
-              $56,000
+              ${cardCarData1.price}
             </span>
 
             <span className="text-[#202020] text-[30px] font-bold max-md:text-2xl">
-              $45,000
+              ${cardCarData1.discrod_price}
             </span>
           </div>
           <p className="text-sm text-[#202020] font-medium mb-4 max-md:text-xs">
-            Вы экономите: $11,000
+            Вы экономите: ${cardCarData1.price - cardCarData1.discrod_price}
           </p>
           <div className="flex md:flex-col w-[120px] max-md:w-full gap-[10px] mb-[40px] max-md:mb-3">
             <div className="flex items-center justify-start h-[48px] px-3 rounded-[5px] bg-[#F6F6F6]">
@@ -121,7 +141,7 @@ const page = () => {
                 className="!w-[18px] max-md:w-[14px] !h-auto mr-[10px]"
               />
               <p className="text-[#202020] font-medium text-sm max-md:text-xs">
-                {cardCarData[0].speed}
+                {cardCarData1.probeg} км
               </p>
             </div>
             <div className="flex items-center justify-start h-[48px] px-3 rounded-[5px] bg-[#F6F6F6]">
@@ -131,7 +151,7 @@ const page = () => {
                 className="!w-[18px] max-md:w-[14px] !h-auto mr-[10px]"
               />
               <p className="text-[#202020] font-medium text-sm max-md:text-xs">
-                {cardCarData[0].oil}
+                {cardCarData1?.type_fuel?.name}
               </p>
             </div>
             <div className="flex items-center justify-start h-[48px] px-3 rounded-[5px] bg-[#F6F6F6]">
@@ -141,7 +161,7 @@ const page = () => {
                 className="!w-[18px] max-md:w-[14px] !h-auto mr-[10px]"
               />
               <p className="text-[#202020] font-medium text-sm max-md:text-xs">
-                {cardCarData[0].year}
+                {cardCarData1.year} год
               </p>
             </div>
           </div>
@@ -156,25 +176,65 @@ const page = () => {
       <div className="grid grid-cols-4 mb-[30px]">
         <div className="grid-cols-1 max-md:col-span-4 mr-[50px] md:character_after relative ">
           <div className="flex flex-col">
-            <CharacterCars img={icon} title="Кузов" text="Седан" />
-            <CharacterCars img={icon1} title="Пробег" text="45 000 км" />
-            <CharacterCars img={icon2} title="Вид топлива" text="Бензин" />
+            <CharacterCars
+              img={icon}
+              title="Кузов"
+              text={cardCarData1?.type_avto?.name}
+            />
+            <CharacterCars
+              img={icon1}
+              title="Пробег"
+              text={`${cardCarData1.probeg} км`}
+            />
+            <CharacterCars
+              img={icon2}
+              title="Вид топлива"
+              text={cardCarData1?.type_fuel?.name}
+            />
           </div>
         </div>
         <div className="grid-cols-1 max-md:col-span-4 mr-[50px] md:character_after relative">
-          <CharacterCars img={icon3} title="Год выпуска" text="2019" />
-          <CharacterCars img={icon4} title="Трансмиссия" text="Робот" />
-          <CharacterCars img={icon5} title="Тип привода" text="FF" />
+          <CharacterCars
+            img={icon3}
+            title="Год выпуска"
+            text={cardCarData1.year}
+          />
+          <CharacterCars
+            img={icon4}
+            title="Трансмиссия"
+            text={cardCarData1?.transmissiya?.name}
+          />
+          <CharacterCars
+            img={icon5}
+            title="Тип привода"
+            text={cardCarData1?.type_drive?.name}
+          />
         </div>
         <div className="grid-cols-1 max-md:col-span-4 mr-[50px] md:character_after relative">
-          <CharacterCars img={icon6} title="Кузов" text="Исправное" />
-          <CharacterCars img={icon7} title="Пробег" text="4" />
-          <CharacterCars img={icon8} title="Вид топлива" text="Синий" />
+          <CharacterCars
+            img={icon6}
+            title="Состояние"
+            text={cardCarData1?.state_avto?.name}
+          />
+          <CharacterCars
+            img={icon7}
+            title="Количество дверей "
+            text={cardCarData1.number_of_doors}
+          />
+          <CharacterCars img={icon8} title="Цвет" text={cardCarData1.color} />
         </div>
         <div className="grid-cols-1 max-md:col-span-4 mr-[50px] relative">
-          <CharacterCars img={icon9} title="Объем двигателя" text="1.5" />
-          <CharacterCars img={icon10} title="Мощность" text="170 л.с" />
-          <CharacterCars img={icon11} title="VIN" text="FCB123792" />
+          <CharacterCars
+            img={icon9}
+            title="Объем двигателя"
+            text={cardCarData1.engine_capacity}
+          />
+          <CharacterCars
+            img={icon10}
+            title="Мощность"
+            text={`${cardCarData1.power} л.с`}
+          />
+          <CharacterCars img={icon11} title="VIN" text={cardCarData1.vin} />
         </div>
       </div>
 
@@ -183,18 +243,7 @@ const page = () => {
           Описание
         </h2>
         <p className="text-[#989898] max-md:text-[13px]">
-          Kia K5 базируется на новой платформе со значительными конструктивными
-          усовершенствованиями, которые обеспечивают не только высокий уровень
-          защиты, но также более точную управляемость и захватывающую динамику.
-          Современные системы активной и пассивной безопасности заботятся о
-          водителе и каждом пассажире, отвечая самым строгим требованиям.
-        </p>
-        <p className="text-[#989898] max-md:text-[13px]">
-          Платформа третьего поколения — это новый стандарт Kia, определяющий
-          расположение рулевого управления, элементов шасси, трансмиссии и пола
-          кабины, который позволяет сделать салон более просторным, улучшить
-          аэродинамические характеристики автомобиля, его управляемость,
-          устойчивость и безопасность.
+          {cardCarData1.description}
         </p>
       </div>
       <div className="relative mt-[50px]">

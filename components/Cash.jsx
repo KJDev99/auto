@@ -1,83 +1,44 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import CardCar from "./CardCar";
 import image from "@/assets/images/card.png";
 import Link from "next/link";
+import api from "@/lib/api";
 
 const Cash = () => {
-  const cardCarData = [
-    {
-      goodPrice: true,
-      top: false,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: true,
-      top: true,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: true,
-      top: true,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: true,
-      top: false,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: false,
-      top: true,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-    {
-      goodPrice: false,
-      top: false,
-      savedcar: true,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
-    },
-  ];
+  const [cardCarData, setCardCarData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const response = await api.get("/avto/");
+        const formattedData = response.data.results.map((car) => ({
+          goodPrice: car.good_price,
+          top: car.avto_xit,
+          savedcar: car.savedcar || false,
+          image: car.avto_image[0].image,
+          name: car.name,
+          text: car.short_description,
+          speed: car.probeg,
+          oil: car.type_fuel.name,
+          year: car.year,
+          price: car.price,
+          id: car.id,
+        }));
+        setCardCarData(formattedData);
+        console.log(response.data.results);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCars();
+  }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="container">
@@ -88,7 +49,7 @@ const Cash = () => {
         <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1 max-md:flex max-md:overflow-x-auto max-md:gap-[10px]  custom-scrollbar">
           {cardCarData.map((elon, index) => (
             <Link
-              href={`/katalog/${index}`}
+              href={`/katalog/${elon.id}`}
               key={index}
               className="max-md:w-full max-md:flex-shrink-0"
             >
