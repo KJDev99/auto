@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 
-const SelectPrice = () => {
-  const [minPrice, setMinPrice] = useState("1 000 000");
-  const [maxPrice, setMaxPrice] = useState("10 000 000");
+const SelectPrice = ({onPriceMin, onPriceMax}) => {
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
 
   const formatPrice = (value) => {
     return new Intl.NumberFormat("ru-RU").format(value);
@@ -15,12 +15,13 @@ const SelectPrice = () => {
 
   const handleMinPriceChange = (e) => {
     setMinPrice(e.target.value);
+    onPriceMax(e.target.value);
   };
 
   const handleMinPriceBlur = () => {
     let value = parsePrice(minPrice);
-    if (isNaN(value) || value < 1000000) {
-      value = 1000000;
+    if (isNaN(value)) {
+      value = null;
     } else if (value >= parsePrice(maxPrice)) {
       value = parsePrice(maxPrice) - 1;
     }
@@ -29,15 +30,17 @@ const SelectPrice = () => {
 
   const handleMaxPriceChange = (e) => {
     setMaxPrice(e.target.value);
+    onPriceMin(e.target.value)
   };
 
   const handleMaxPriceBlur = () => {
     let value = parsePrice(maxPrice);
     if (isNaN(value) || value <= parsePrice(minPrice)) {
       value = parsePrice(minPrice) + 1;
-    } else if (value > 10000000) {
-      value = 10000000;
-    }
+    } 
+    // else if (value > 10000000) {
+    //   value = 10000000;
+    // }
     setMaxPrice(formatPrice(value));
   };
 

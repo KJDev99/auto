@@ -5,46 +5,60 @@ import carmore from "@/assets/images/carmore.svg";
 import InfoBlock from "@/components/InfoBlock";
 import Image from "next/image";
 import { FaAngleRight } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import api from "@/lib/api";
 
 const page = () => {
-  const cardNewsData = [
-    {
-      image: image,
-      title: "ТОП-1 НАДЕЖНЫХ АВТОМОБИЛЕЙ ДЛЯ СЕМЕЙНОГО ИСПОЛЬЗОВАНИЯ",
-      text: "Японский автомобиль является идеальным вариантом для семейного...",
-      date: "11 Июля 2024",
-    },
-  ];
+
+  const pathname = usePathname();
+  const lastSegment = pathname.split("/").pop();
+  const [cardNewsData1, setCardCarData] = useState([]);
+
+  const dateObject = new Date(cardNewsData1.create_at);
+  
+  const formattedDate = dateObject.toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get(`news/${lastSegment}/`);
+        setCardCarData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="container mb-[100px] max-md:mb-[60px]">
       <div className="flex gap-6 max-md:flex-col">
         <div className="w-4/6 max-md:w-full">
           <p className="text-[#050B20] text-sm mt-9 mb-2 font-medium max-md:text-xs max-md:mt-5">
-            Главная/Новости/ {cardNewsData[0].title}
+            Главная/Новости/ {cardNewsData1.title}
           </p>
           <h2 className="mb-[15px] text-[#202020] text-[28px] font-black max-md:text-lg max-md:mb-1">
-            {cardNewsData[0].title}
+            {cardNewsData1.title}
           </h2>
           <p className="text-[#989898] mb-[22px] text-sm font-medium max-md:text-xs max-md:mb-5">
-            7 Июля 2024
+            {formattedDate}
           </p>
-          <Image
-            src={cardNewsData[0].image}
+          <img
+            src={cardNewsData1.image}
             alt="title"
             className="h-[383px] w-full rounded-[15px] object-cover max-md:h-[267px]"
           />
           <p className="mt-[25px] mb-[30px] text-[#989898] font-medium max-md:my-5 max-md:text-[13px]">
-            С начала весны 2022 года российский автомобильный рынок
-            подвергся кардинальным изменениям. Экономические ограничения и
-            политические разногласия спровоцировали прекращение работы многих
-            иностранных брендов, остановку заводов, закрытие представительств.
-            Уход поддержали не только европейские и американские компании. К
-            санкциям присоединились и Японские торговые предприятия. Из-за этого
-            российские дилеры начали масштабную диверсификацию на Корейский и
-            Китайский рынки. Ниже рассмотрим как осуществляется импорт авто из
-            Южной Кореи, начав с доступных способов покупки.
+            {cardNewsData1.discription}
           </p>
-          <h3 className="text-[#202020] font-bold text-lg max-md:text-[16px]">
+          {/* <h3 className="text-[#202020] font-bold text-lg max-md:text-[16px]">
             Покупка у официального дилера
           </h3>
           <p className="mt-[15px] mb-[30px] text-[#989898] font-medium max-md:my-5 max-md:text-[13px]">
@@ -54,7 +68,7 @@ const page = () => {
             сопровождается стандартными особенностями работы с официальными
             представителями. В их числе «навязывание» простых опций по
             завышенной цене, увеличенная наценка из-за повышенного спроса, др.
-          </p>
+          </p> */}
           <div className="flex flex-col p-[18px]  border border-[#E6E6E6] rounded-[15px]">
             <div className="flex items-center ">
               <Image src={imagewarn} alt="warn" />

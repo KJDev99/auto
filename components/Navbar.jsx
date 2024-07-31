@@ -32,14 +32,14 @@ const Navbar = () => {
           <div className="flex pb-3 mt-[10px] border-b border-border8 max-md:hidden">
             <p className="text-c989898 flex text-sm items-center font-medium">
               <CiLocationOn className="mr-3 text-lg mt-1" /> г. Санкт-Петербург,
-              СВердское шоссе, д1
+              Свердское шоссе, д1
             </p>
 
             <a
               href="tel:+78987764554"
               className="text-c989898 flex text-sm items-center ml-[50px] font-medium"
             >
-              <BsTelephone className="mr-3 text-lg mt-1" /> г. +7 (898)
+              <BsTelephone className="mr-3 text-lg mt-1" /> +7 (898)
               776-45-54
             </a>
             <a
@@ -101,10 +101,10 @@ const Navbar = () => {
                 <FiSearch className="cursor-pointer text-c989898" />
               </div>
               <div className="bg-bgwhite flex items-center justify-between p-4 mr-1">
-                <FaWhatsapp className="cursor-pointer text-c989898 text-xl" />
+                <SlSocialVkontakte className="cursor-pointer text-c989898 text-xl" />
               </div>
               <div className="bg-bgwhite flex items-center justify-between p-4">
-                <SlSocialVkontakte className="cursor-pointer text-c989898 text-xl" />
+                <FaWhatsapp className="cursor-pointer text-c989898 text-xl" />
               </div>
             </nav>
 

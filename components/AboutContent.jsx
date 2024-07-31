@@ -20,7 +20,7 @@ const AboutContent = () => {
         <Image src={img1} alt="img1" className="w-full" />
       </div>
       <div className="col-span-3 max-md:col-span-2">
-        <Image src={img2} alt="img2" className="w-full" />
+        <Image src={img2} alt="img2" className="w-full max-md:h-full" />
       </div>
       <div className="col-span-3 rounded-[15px] overflow-hidden">
         <Image

@@ -27,7 +27,6 @@ const Cash = () => {
           id: car.id,
         }));
         setCardCarData(formattedData);
-        console.log(response.data.results);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -59,9 +58,11 @@ const Cash = () => {
         </div>
 
         <div className="flex justify-end mt-[30px]">
-          <button className="border border-red text-red text-sm px-[50px] py-5 font-medium max-md:px-[38px] max-md:text-xs">
+         <Link href={"/katalog"}>
+         <button className="border border-red text-red text-sm px-[50px] py-5 font-medium max-md:px-[38px] max-md:text-xs">
             Все машины
           </button>
+         </Link>
         </div>
       </div>
     </div>

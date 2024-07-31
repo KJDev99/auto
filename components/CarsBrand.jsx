@@ -13,7 +13,6 @@ const CarsBrand = () => {
       try {
         const response = await api.get("/avto/marka/");
         setBrands(response.data);
-        console.log(response.data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -29,7 +28,7 @@ const CarsBrand = () => {
 
   return (
     <div className="container">
-      <h2 className="font-montserrat text-[28px] font-black mb-[30px] max-md:text-xl max-md:mb-5">
+      <h2 className="font-montserrat text-[28px] font-black mb-[30px] max-md:text-xl max-md:mb-5 uppercase">
         Выберите марку авто
       </h2>
       <div className="grid grid-cols-6 max-md:grid-cols-2 mb-[100px]">
@@ -41,7 +40,7 @@ const CarsBrand = () => {
             <img
               src={brand.logo}
               alt="logo"
-              className="w-full"
+              className="w-[120px] object-cover"
             />
             <p className="text-center text-[#202020] text-sm font-medium mt-[8px]">
               {brand.name}

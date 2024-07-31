@@ -40,16 +40,7 @@ import api from "@/lib/api";
 const page = () => {
   const cardCarData = [
     {
-      goodPrice: true,
-      top: false,
-      savedcar: false,
-      image: image,
-      title: "Kia Cerato",
-      text: "4.0 D5 PowerPulse Momentum 5dr...",
-      speed: "45 000 км",
-      oil: "Дизель",
-      year: "2019 год",
-      price: "$95,000",
+      savedcar: false, 
     },
   ];
 

@@ -19,8 +19,8 @@ export default function Footer() {
   return (
     <div className="bg-black ">
       <div className="container relative">
-        <div className="grid grid-cols-5 pt-[60px] pb-[40px] max-md:pt-5 max-md:mb-[30px]">
-          <div className="gird-cols-1 max-md:col-span-5 max-md:mb-[30px]">
+        <div className="grid grid-cols-5 max-md:grid-cols-6 pt-[60px] pb-[40px] max-md:pt-5 max-md:mb-[30px]">
+          <div className="gird-cols-1 max-md:col-span-6 max-md:mb-[30px]">
             <Image src={logo} alt="logo" className="w-[143px]" />
           </div>
           <div className="grid-cols-1 max-md:col-span-2">
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
           <div className="grid-cols-1 max-md:col-span-2">
             <nav className="flex flex-col font-semibold text-white ">
-              <h3 className="text-lg mb-3 max-md:text-sm max-md:mb-2">марки</h3>
+              <h3 className="text-lg mb-3 max-md:text-sm max-md:mb-2">Марки</h3>
               <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/">
                 Honda
               </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
               </Link>
             </nav>
           </div>
-          <div className="grid-cols-1 max-md:col-span-1">
+          <div className="grid-cols-1 max-md:col-span-2">
             <nav className="flex flex-col font-semibold text-white ">
               <h3 className="text-lg mb-3 max-md:text-sm max-md:mb-2">
                 Типы авто
@@ -95,7 +95,7 @@ export default function Footer() {
                 Хэтчбек
               </Link>
               <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/about">
-                внедорожник
+                Внедорожник
               </Link>
               <Link className="mb-3 max-md:text-xs max-md:mb-2" href="/news">
                 Гибрид
@@ -109,7 +109,7 @@ export default function Footer() {
               </Link>
             </nav>
           </div>
-          <div className="grid-cols-1 max-md:col-span-5">
+          <div className="grid-cols-1 max-md:col-span-6">
             <nav className="flex flex-col font-semibold text-white ">
               <h3 className="text-lg mb-3 max-md:text-sm max-md:mb-2">
                 Контакты
@@ -117,7 +117,7 @@ export default function Footer() {
               <div className="flex items-center mb-5 max-md:mb-[15px]">
                 <CiLocationOn className="mr-2" />
                 <span className="text-sm max-md:text-xs">
-                  г. Москва, ул. Подольская, д. 12
+                  Москва, ул. Подольская, д. 12
                 </span>
               </div>
               <div className="flex items-center mb-5 max-md:mb-[15px]">
@@ -132,16 +132,16 @@ export default function Footer() {
               </div>
               <div className="flex">
                 <div className="bg-[#333333] flex items-center justify-between p-4 mr-1">
-                  <FaWhatsapp className="cursor-pointer text-c989898 text-xl" />
+                  <SlSocialVkontakte className="cursor-pointer text-c989898 text-xl" />
                 </div>
                 <div className="bg-[#333333] flex items-center justify-between p-4">
-                  <SlSocialVkontakte className="cursor-pointer text-c989898 text-xl" />
+                  <FaWhatsapp className="cursor-pointer text-c989898 text-xl" />
                 </div>
               </div>
             </nav>
           </div>
         </div>
-        <p className="text-center pb-[30px] text-xs text-white max-md:text-left">
+        <p className="text-center pb-[30px] text-xs text-white max-md:text-left font-semibold">
           Политика и конфиденциальность
         </p>
         <div
@@ -151,7 +151,7 @@ export default function Footer() {
           <div className="rounded-full h-16 w-16 flex items-center justify-center border border-white">
             <Image src={footerTop} alt="footerTop" />
           </div>
-          <p className="mt-5 text-white  text-xs">Сделано в UserTech</p>
+          <p className="mt-5 text-white  text-xs font-semibold">Сделано в UserTech</p>
         </div>
       </div>
     </div>

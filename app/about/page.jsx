@@ -13,7 +13,7 @@ const page = () => {
       <p className="text-[#050B20] text-sm mt-9 mb-2 font-medium max-md:text-xs max-md:mt-5">
         Главная/О нас
       </p>
-      <h2 className="text-[28px] text-[#202020] font-black mb-[30px] max-md:text-xl">
+      <h2 className="text-[28px] text-[#202020] font-black mb-[30px] max-md:text-xl uppercase">
         О нашей компании
       </h2>
       <p className="text-[#989898] font-medium mb-[10px] max-md:text-[13px]">
@@ -42,18 +42,18 @@ const page = () => {
           />
           <InfoMenuItem
             img={itemImg2}
-            text="онлайн-чат 24/7"
+            text="Онлайн-чат 24/7"
             title="Мы всегда на связи, чтобы ответить на ваши вопросы и помочь вам с выбором."
           />
           <InfoMenuItem
             img={itemImg3}
-            text="Упрощенный выбор авто"
-            title="мы создали этот сайт, чтобы сделать поиск автомобиля по вашим критериям максимально простым и удобным."
+            text="Упрощенный&nbsp;выбор&nbsp;авто"
+            title="Мы создали этот сайт, чтобы сделать поиск автомобиля по вашим критериям максимально простым и удобным."
           />
           <InfoMenuItem
             img={itemImg4}
             text="Доставка"
-            title="поставка в любой регион РФ, прямая связь без посредников"
+            title="Поставка в любой регион РФ, прямая связь без посредников."
           />
         </div>
       </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -10,49 +10,38 @@ import { Navigation } from "swiper/modules";
 import NewsCars from "./NewsCars";
 import image from "@/assets/images/news.png";
 import Link from "next/link";
+import api from "@/lib/api";
 
 const MainNews = () => {
-  const cardNewsData = [
-    {
-      image: image,
-      title: "ТОП-1 НАДЕЖНЫХ АВТОМОБИЛЕЙ ДЛЯ СЕМЕЙНОГО ИСПОЛЬЗОВАНИЯ",
-      text: "Японский автомобиль является идеальным вариантом для семейного...",
-      date: "11 Июля 2024",
-    },
-    {
-      image: image,
-      title: "ТОП-2 НАДЕЖНЫХ АВТОМОБИЛЕЙ ДЛЯ СЕМЕЙНОГО ИСПОЛЬЗОВАНИЯ",
-      text: "Японский автомобиль является идеальным вариантом для семейного...",
-      date: "11 Июля 2024",
-    },
-    {
-      image: image,
-      title: "ТОП-3 НАДЕЖНЫХ АВТОМОБИЛЕЙ ДЛЯ СЕМЕЙНОГО ИСПОЛЬЗОВАНИЯ",
-      text: "Японский автомобиль является идеальным вариантом для семейного...",
-      date: "11 Июля 2024",
-    },
-    {
-      image: image,
-      title: "ТОП-4 НАДЕЖНЫХ АВТОМОБИЛЕЙ ДЛЯ СЕМЕЙНОГО ИСПОЛЬЗОВАНИЯ",
-      text: "Японский автомобиль является идеальным вариантом для семейного...",
-      date: "11 Июля 2024",
-    },
-    {
-      image: image,
-      title: "ТОП-5 НАДЕЖНЫХ АВТОМОБИЛЕЙ ДЛЯ СЕМЕЙНОГО ИСПОЛЬЗОВАНИЯ",
-      text: "Японский автомобиль является идеальным вариантом для семейного...",
-      date: "11 Июля 2024",
-    },
-    {
-      image: image,
-      title: "ТОП-6 НАДЕЖНЫХ АВТОМОБИЛЕЙ ДЛЯ СЕМЕЙНОГО ИСПОЛЬЗОВАНИЯ",
-      text: "Японский автомобиль является идеальным вариантом для семейного...",
-      date: "11 Июля 2024",
-    },
-  ];
+  const [cardNewsData, setCardNewsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const response = await api.get("/news/");
+        const formattedData = response.data.results.map((car) => ({
+          image: car.image,
+          title: car.title,
+          text: car.discription,
+          date: car.create_at,
+          id: car.id,
+              }));
+        setCardNewsData(formattedData);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCars();
+  }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
   return (
     <div className="container relative">
-      <h2 className="font-montserrat text-[28px] font-black mb-[30px]  max-md:text-xl max-md:mb-5">
+      <h2 className="font-montserrat text-[28px] font-black mb-[30px]  max-md:text-xl max-md:mb-5 uppercase">
         Новости
       </h2>
       <Swiper
@@ -77,7 +66,7 @@ const MainNews = () => {
       >
         {cardNewsData.map((news, index) => (
           <SwiperSlide key={index}>
-            <Link href={`/news/${index}`}>
+            <Link href={`/news/${news.id}`}>
               <NewsCars
                 image={news.image}
                 title={news.title}

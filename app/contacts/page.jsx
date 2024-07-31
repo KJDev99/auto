@@ -34,36 +34,36 @@ const page = () => {
                 Адрес
               </p>
               <a className="text text-[#202020]">
-                г. Санкт-Петербург, СВердское шоссе, д1
+                Санкт-Петербург, Свердское шоссе, д1
               </a>
             </div>
 
             <div className="flex mb-[124px] max-md:mb-[30px]">
               <div className="bg-[#F6F6F6] flex font-medium justify-between p-4 mr-1">
-                <FaWhatsapp className="cursor-pointer text-c989898 text-xl" />
+                <SlSocialVkontakte className="cursor-pointer text-c989898 text-xl" />
               </div>
               <div className="bg-[#F6F6F6] flex font-medium justify-between p-4">
-                <SlSocialVkontakte className="cursor-pointer text-c989898 text-xl" />
+                <FaWhatsapp className="cursor-pointer text-c989898 text-xl" />
               </div>
             </div>
           </div>
           <div className="w-1/2 flex justify-end max-md:w-full">
             <div className="bg-form1 pl-[60px] pr-[80px] max-md:pl-[40px] max-md:pr-[50px] flex flex-col">
-              <h2 className="text-[28px] text-white font-black mt-[44px] text-center mb-8 max-md:text-xl max-md:mt-7 max-md:mb-4">
+              <h2 className="text-[28px] text-white font-black mt-[44px] text-center mb-8 max-md:text-xl max-md:mt-7 max-md:mb-4 uppercase">
                 Оставьте заявку
               </h2>
               <p className="text-xs text-white mb-1 font-semibold">Ваше имя</p>
               <input
                 type="text"
-                className="h-[65px] max-md:h-[55px] w-full border border-white outline-none bg-transparent rounded-[5px] px-5 max-md:px-3 text-white"
+                className="h-[65px] max-md:h-[55px] w-full border border-white outline-none bg-transparent rounded-[5px] px-5 max-md:px-3 text-white placeholder-white"
                 placeholder="имя"
               />
-              <p className="text-xs text-white mb-1 mt-3 font-semibold">
+              <p className="text-xs text-white placeholder-white mb-1 mt-3 font-semibold">
                 Номер телефона
               </p>
               <input
                 type="text"
-                className="h-[65px] max-md:h-[55px] w-full border border-white outline-none bg-transparent rounded-[5px] px-5 max-md:px-3 text-white"
+                className="h-[65px] max-md:h-[55px] w-full border border-white outline-none bg-transparent rounded-[5px] px-5 max-md:px-3 text-white placeholder-white"
                 placeholder="+7(___) ___-__-__"
               />
               <button className="bg-white text-red w-full h-[70px] max-md:h-[55px] mt-5 mb-3 max-md:my-[10px]  rounded-[5px] border-none outline-none font-semibold max-md:text-xs">

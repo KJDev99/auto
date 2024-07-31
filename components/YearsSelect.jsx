@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
 
-const YearsSelect = () => {
+const YearsSelect = ({onYearOne, onYearTwo}) => {
   const currentYear = new Date().getFullYear();
   const [startYear, setStartYear] = useState(2000);
   const [endYear, setEndYear] = useState(currentYear);
 
   const handleStartYearChange = (e) => {
     setStartYear(e.target.value);
+    onYearOne(e.target.value)
   };
 
   const handleStartYearBlur = () => {
@@ -25,6 +26,7 @@ const YearsSelect = () => {
 
   const handleEndYearChange = (e) => {
     setEndYear(e.target.value);
+    onYearTwo(e.target.value)
   };
 
   const handleEndYearBlur = () => {

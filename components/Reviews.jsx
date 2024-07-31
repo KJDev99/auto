@@ -15,7 +15,7 @@ const Reviews = () => {
   return (
     <div className="container relative">
       <div className="flex justify-between items-center">
-        <h2 className="font-montserrat text-[28px] font-black mb-[30px]  max-md:text-xl max-md:mb-5">
+        <h2 className="font-montserrat text-[28px] font-black mb-[30px]  max-md:text-xl max-md:mb-5 uppercase">
           Отзывы о Boom-avto
         </h2>
         <Image src={Service} alt="Service" className="max-md:hidden" />

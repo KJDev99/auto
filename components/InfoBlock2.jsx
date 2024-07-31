@@ -7,7 +7,7 @@ const InfoBlock = () => {
   return (
     <div className="mt-[100px]  shadow-lg rounded-[15px] flex  h-[288px] max-md:h-[543px] max-md:flex-col">
       <div className="w-1/2 p-8 max-md:w-full max-md:py-5 max-md:px-5 bg-white">
-        <h2 className="text-[#202020] text-[26px] font-montserrat font-bold max-md:text-xl ">
+        <h2 className="text-[#202020] text-[26px] font-montserrat font-bold max-md:text-xl uppercase">
           Нужна помощь с выбором?
         </h2>
         <p className="mb-6 mt-3 text-[#989898] font-medium max-md:mt-2 max-md:mb-5 max-md:text-[13px]">

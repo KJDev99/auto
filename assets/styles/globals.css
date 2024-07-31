@@ -76,11 +76,17 @@ body {
 }
 
 .bg-form1 {
-  background: url("/Form.png") no-repeat center center;
+  background: url("/Form1.png") no-repeat center center;
   background-size: contain;
   height: max-content;
   max-width: 540px;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .bg-form1 {
+    background: url("/Form.png") no-repeat center center;
+  }
 }
 
 .bg-form2 {

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import axios from 'axios';
 
-const SelectCars = () => {
+const SelectCars = ({ onCategoryChange, onDistrictChange }) => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isDistrictOpen, setIsDistrictOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -69,12 +69,16 @@ const SelectCars = () => {
     setSelectedDistrict("");
     setIsCategoryOpen(false);
     setIsDistrictOpen(true);
+    const categoryId = categories.find(cat => cat.name === category)?.name;
+    onCategoryChange(categoryId); // Pass category ID to parent
   };
 
   const handleDistrictChange = (event) => {
     const district = event.target.id;
     setSelectedDistrict(district);
     setIsDistrictOpen(false);
+    const districtId = districts.find(d => d.name === district)?.name;
+    onDistrictChange(districtId); // Pass district ID to parent
   };
 
   useEffect(() => {
